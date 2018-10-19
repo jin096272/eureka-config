@@ -1,0 +1,37 @@
+﻿
+---
+server:
+    port: 6666
+spring:
+    profiles: eureka
+    application:
+         name: eureka
+eureka:
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+    instance:
+        hostname: localhost
+
+
+---
+server:
+    port: 6000
+spring:
+    profiles: eureka-client
+    application:
+         name: eureka-client
+    datasource:
+         url: jdbc:mysql://localhost:3306/springcloud
+         username: syang
+         password:
+mybatis:
+     typeAliasesPackage: com.syang.pojo
+     mapperLocations: classpath:dao/*.xml
+eureka:
+    client:
+        serviceUrl:
+              defaultZone: http://localhost:6666/eureka/
+    instance:
+        instanceId: eureka-client:6000
+        preferIpAddress: true
