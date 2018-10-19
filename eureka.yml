@@ -18,7 +18,7 @@ eureka:
 server:
     port: 6000
 spring:
-    profiles: eureka-client
+    profiles: client
     application:
          name: eureka-client
     datasource:
